@@ -4,35 +4,30 @@ import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
 import Footer from '@/components/Footer';
 import dynamic from 'next/dynamic';
+import Header from '@/components/Header';
+import { Metadata } from 'next';
 
 const SimplePDFViewer = dynamic(() => import('@/components/Resume'), { ssr: false });
+
+export const metadata: Metadata = {
+  title: 'Sam Bock - Software Developer Portfolio',
+  description: "Sam Bock's software developer portfolio showcasing projects, work experience, and skills.",
+  icons: {
+    icon: '/favicon.ico',
+  }
+}
 
 const Home = () => {
   return (
     <div className="max-w-screen-md mx-auto py-12 px-4">
-      <Head>
-        <title>Sam Bock - Software Developer Portfolio</title>
-        <meta name="description" content="Sam Bock's software developer portfolio showcasing projects, work experience, and skills." />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      
-      <header className="text-center mb-12">
-        <h1 className="text-5xl font-bold">Sam Bock</h1>
-        <p className="mt-4 text-xl text-gray-600">Software Engineer specializing in AI/ML and Full-Stack Development</p>
-        <div className="mt-6 space-x-4">
-          <a href="https://linkedin.com/in/smbock42" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">LinkedIn</a>
-          <a href="https://github.com/smbock42" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">GitHub</a>
-          <a href="#resume" className="text-blue-600 hover:underline">Resume</a>
-        </div>
-      </header>
-      
       <main className="space-y-24">
+        <Header />
         <About />
         <Experience />
         <Projects />
-        <section id="resume">
+        {/* <section id="resume">
           <SimplePDFViewer />
-        </section>
+        </section> */}
       </main>
       
       <Footer />
